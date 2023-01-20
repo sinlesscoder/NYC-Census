@@ -5,7 +5,7 @@
 #4. If a person's years of education is 17 what would their predicted income be based on the regression estimates from (2) and (3)?
 
 library(readxl)
-New_York_City_Census <- read_excel("sample_for_aa6198.xls")
+New_York_City_Census <- read_excel("census_file.xls")
 View(New_York_City_Census)
 
 #1
