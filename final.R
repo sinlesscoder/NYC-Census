@@ -63,7 +63,7 @@ mean_sigma_queens
 t_distribut = (queens_thirty - bronx_thirty) / sqrt(mean_sigma_bronx/counter_bronx + mean_sigma_queens/counter_queens)
 t_distribut
 
-approx_df_values = function(s2_1, n_1, s2_2, n_2){
+approx_df_values = function(s2_1, n_1, s2_2, n_2){ #formula using for testing the hypothesis about Variance, formula being the z-statistic
   approx = (s2_1 / n_1 + s2_2 / n_2)^2 /
     (s2_1^2 / (n_1^2 * (n_1 - 1)) + s2_2^2 / (n_2^2 * (n_2 - 1)))
   return(approx)
@@ -71,7 +71,7 @@ approx_df_values = function(s2_1, n_1, s2_2, n_2){
 df_value = approx_df_values(s2_1 = mean_sigma_bronx, n_1 = counter_bronx, s2_2 = mean_sigma_queens, n_2 = counter_queens)
 df_value
 
-2*(1-pt(t_distribut,df=df_value))
+2*(1-pt(t_distribut,df=df_value)) #used to return the probability cumulative density of the t distribution to get the p-value
 #not able to reject the null hypothesis
 
 ##################################################################################################
