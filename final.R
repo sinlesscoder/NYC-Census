@@ -8,11 +8,11 @@ library(readxl)
 New_York_City_Census <- read_excel("census_file.xls")
 View(New_York_City_Census)
 
-#1
+#1, We need to solve the t-statistic formula
 income = 0
 income_thirty = 0
 counter_bronx = 0
-for (i in 1:1000) {
+for (i in 1:1000) { #finding the average income in Bronx
   if(New_York_City_Census$Age[i] < 30 & New_York_City_Census$Borough[i] == "Bronx") { 
     income = New_York_City_Census$Income[i] 
     counter_bronx = counter_bronx + 1}
@@ -25,7 +25,7 @@ bronx_thirty = income_thirty/counter_bronx
 bronx_thirty
 
 total_income = 0
-for (i in 1:1000) {
+for (i in 1:1000) { #finding the sigma squared
   if(New_York_City_Census$Age[i] < 30 & New_York_City_Census$Borough[i] == "Bronx") { 
     income = New_York_City_Census$Income[i] - bronx_thirty
     total_income = income^2 + total_income}
@@ -37,7 +37,7 @@ mean_sigma_bronx
 income = 0
 income_thirty = 0
 counter_queens = 0
-for (i in 1:1000) {
+for (i in 1:1000) { #finding the average income in Queens
   if(New_York_City_Census$Age[i] < 30 & New_York_City_Census$Borough[i] == "Queens") { 
     income = New_York_City_Census$Income[i] 
     counter_queens = counter_queens + 1}
@@ -50,7 +50,7 @@ queens_thirty = income_thirty/counter_queens
 queens_thirty
 
 total_income = 0
-for (i in 1:1000) {
+for (i in 1:1000) {#finding the sigma squared
   if(New_York_City_Census$Age[i] < 30 & New_York_City_Census$Borough[i] == "Queens") { 
     income = New_York_City_Census$Income[i] - queens_thirty
     total_income = income^2 + total_income}
@@ -58,6 +58,8 @@ for (i in 1:1000) {
 mean_sigma_queens = total_income
 mean_sigma_queens
 
+#We use he above results to solve the t-statistic formula, 
+#substracting the two average and dividing that by the sum of the sigma and sqrt'ing that.
 t_distribut = (queens_thirty - bronx_thirty) / sqrt(mean_sigma_bronx/counter_bronx + mean_sigma_queens/counter_queens)
 t_distribut
 
